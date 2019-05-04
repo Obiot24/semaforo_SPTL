@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+      
+      var socket = io('http://192.168.10.119', {query:"group=web"});
+
+      function enviar(){
+        var x = document.getElementById("valor").value
+        var name = document.getElementById("name").value
+        socket.emit('traffic_light', { traffic_light: x, name: name });
+      }   
+        
+    </script>
+  <script>
+      var txt = document.getElementById("valor")
+  </script>
+  <body>
+      <input type="text" placeholder="semaforo" id="valor" />
+      <input type="text" placeholder="name" id="name" />
+      <button onclick="enviar()">Send</button>
+    
+  </body>
+</html>
